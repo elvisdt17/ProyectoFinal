@@ -6,23 +6,6 @@
     <title>Publicar Inmueble</title>
     <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="/maps/documentation/javascript/demos/demos.css">
-
-    <script>
-      google.map.event.addDomListener(window,"load",function() {
-        // Create a map object and specify the DOM element for display.
-        var mapElement = document.getElementById('map')
-
-        var map = new google.maps.Map(mapElement,{
-          center: {lat: 18.439114, lng: -69.979381},
-          scrollwheel: false,
-          zoom: 8
-
-        });
-      })
-
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRoF_UojmLWjuV2c1bKnuC5o4_RqBXNA4_RqBXNA4"
-    async defer></script>
   </head>
   <body>
     <!-- Top Bar -->
@@ -90,13 +73,5 @@
            </div>
             </div>
     </div>
-    <style media="screen">
-      #map{
-        width: 100%;
-        height: 100%;
-      }
-    </style>
-    <div id="map">akjsdkasjdhj</div>
-
  </body>
 </html>
