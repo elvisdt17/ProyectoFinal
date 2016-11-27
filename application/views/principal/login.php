@@ -12,7 +12,7 @@
       <div class="top-bar-left">
         <ul class="menu">
           <li class="menu-text">Itla Inmuebles</li>
-          <li><a href="<?php echo base_url('Principal'); ?>">Inicio</a></li>
+          <!-- <li><a href="<?php //echo base_url('principal'); ?>">Inicio</a></li> -->
         </ul>
       </div>
       <div class="top-bar-right">
@@ -29,37 +29,40 @@
     </style>
     <div class="cuadro">
   <div class="medium-6 medium-centered large-4 large-centered columns">
-    <form method="post" action="<?php echo base_url('Principal'); ?>">
+    <form method="post" action="<?php echo base_url('Usuario/guardarUsr'); ?>">
       <div class="row">
         <h4 class="text-center">Ingrese sus Datos</h4>
         <div class="column">
         <label>Nombre
-          <input type="text" autofocus="true" placeholder="Nombre">
+          <input type="text" autofocus="true" placeholder="Nombre"  name="nombre" >
         </label>
         <label>Apellido
-          <input type="text" placeholder="Apellido">
+          <input type="text" placeholder="Apellido" name="apellido">
         </label>
         <label>Correo
-          <input type="text" placeholder="ejemplo@micorreo.com">
+          <input type="text" placeholder="ejemplo@micorreo.com" name="correo">
+        </label>
+        <label>Contraseña
+          <input type="password" name="clave">
         </label>
         <label>Cédula
-          <input type="text" placeholder="402-0000000-0">
+          <input type="text" placeholder="402-0000000-0" name="cedula">
         </label>
       </div>
       <div class="column">
         <label>Teléfono
-          <input type="text" placeholder="000-000-0000">
+          <input type="text" placeholder="000-000-0000" name="telefono">
         </label>
         <label>Fax
-          <input type="text" placeholder="000-000-0000">
+          <input type="text" placeholder="000-000-0000" name="fax">
         </label>
         <label>Celular
-          <input type="text" placeholder="000-000-0000">
+          <input type="text" placeholder="000-000-0000" name="celular">
         </label>
         <label>Información Adicional
-          <input type="text" placeholder="">
+          <input type="text" placeholder="Escribe lo que quieras" name="info_adic">
         </label>
-        <p><a type="submit" class="button expanded">Ingresar</a></p>
+        <p><button type="submit" class="button expanded">Ingresar</button></p>
         </div>
       </div>
     </form>

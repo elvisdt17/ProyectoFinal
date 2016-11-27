@@ -19,6 +19,7 @@
           <li><a href="#">Mapa</a></li>
           <li><a href="<?php echo base_url('SubirProducto'); ?>">Publicar Inmueble</a></li>
           <li><a href="<?php echo base_url('Seguridad'); ?>">Crear Cuenta</a></li>
+          <li><a href="<?php echo base_url('/Seguridad/cerrar'); ?>">Cerrar sesion</a></li>
         </ul>
       </div>
       <div class="top-bar-right">
@@ -30,7 +31,7 @@
     </div>
     <!-- End Top Bar -->
     <br>
-    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+    <!-- <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
     <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
@@ -47,7 +48,7 @@
       <img src="http://placehold.it/1850x750">
     </li>
   </ul>
-</div>
+</div> -->
     <br /> <br />
     <div class="row column text-center">
       <h2>Artículos Recientes</h2>
@@ -55,13 +56,21 @@
     </div>
 
     <div class="row small-up-2 large-up-4">
-      <div class="column" >
-        <img width="600px" height="400px" class="" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
-      <div class="column">
+      <?php
+      $d = "RD$ ";
+      foreach ($articulo as $art){
+        $linkArt = base_url("/Principal/showArti/?id={$art->id}");
+        echo "      <div class='column' >
+                <img width='600px' height='400px' class='' src='http://placehold.it/600x400'>
+                <h5>{$art->titulo}</h5>
+                <p>$d{$art->precio}</p>
+                <a href='{$linkArt}' class='button expanded botones-recientes'>Ver</a>
+              </div>";
+      } ?>
+
+
+
+      <!-- <div class="column">
         <img class="" width="600px" height="400px" src="http://placehold.it/600x400">
         <h5>Nulla At Nulla Justo, Eget</h5>
         <p>$400</p>
@@ -102,7 +111,7 @@
         <h5>Nulla At Nulla Justo, Eget</h5>
         <p>$400</p>
         <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
+      </div> -->
     </div>
     <hr>
     <div class="row column text-center">
@@ -111,7 +120,18 @@
     </div>
 
     <div class="row small-up-2 medium-up-3 large-up-6">
-      <div class="column">
+      <?php
+      $d = "RD$ ";
+      foreach ($articulos as $arti){
+         $linkArt = base_url("/Principal/showArti/?id={$arti->id}");
+        echo             "<div class='column'>
+                <img class='thumbnail' src='http://placehold.it/500x400'>
+                <h5>{$arti->titulo}</h5>
+                <p>$d{$arti->precio}</p>
+                <a href='{$linkArt}' class='button small expanded hollow'>Ver</a>
+              </div>";
+      } ?>
+      <!-- <div class="column">
         <img class="thumbnail" src="http://placehold.it/500x400">
         <h5>Nulla At Nulla Justo, Eget</h5>
         <p>$400</p>
@@ -146,7 +166,7 @@
         <h5>Nulla At Nulla Justo, Eget</h5>
         <p>$400</p>
         <a href="<?php echo base_url('Producto'); ?>" class="button small expanded hollow">Ver</a>
-      </div>
+      </div> -->
     </div>
 
     <hr>

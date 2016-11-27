@@ -60,28 +60,23 @@
         </div>
       </div>
       <div class="medium-6 large-5 columns">
+        <?php
+
+          
+        ?>
         <h3>My Awesome Product</h3>
         <p>Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in.</p>
 
-        <label>Size
-        <select>
-          <option value="husker">Small</option>
-          <option value="starbuck">Medium</option>
-          <option value="hotdog">Large</option>
-          <option value="apollo">Yeti</option>
-        </select>
-        </label>
-
         <div class="row">
           <div class="small-3 columns">
-            <label for="middle-label" class="middle">Quantity</label>
+            <label for="middle-label" class="middle">Precio</label>
           </div>
           <div class="small-9 columns">
-            <input type="text" id="middle-label" placeholder="One fish two fish">
+            <input readonly type="text" id="middle-label" value="">
           </div>
         </div>
 
-        <a href="#" class="button large expanded">Buy Now</a>
+        <a href="#" class="button large expanded">Contactar</a>
 
         <div class="small secondary expanded button-group">
             <a class="button">Facebook</a>
@@ -90,48 +85,25 @@
           </div>
         </div>
     </div>
-
+<br>
     <div class="column row">
-      <hr>
       <ul class="tabs" data-tabs id="example-tabs">
-        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Reviews</a></li>
-        <li class="tabs-title"><a href="#panel2">Similar Products</a></li>
+        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Información</a></li>
       </ul>
       <div class="tabs-content" data-tabs-content="example-tabs">
         <div class="tabs-panel is-active" id="panel1">
-          <h4>Reviews</h4>
+          <h4>Vendedor</h4>
+          <hr />
           <div class="media-object stack-for-small">
-            <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
-            </div>
+            <!-- <div class="media-object-section">
+              <img class="thumbnail" src="http://placehold.it/100x100">
+            </div> -->
             <div class="media-object-section">
               <h5>Mike Stevenson</h5>
               <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
             </div>
           </div>
-          <div class="media-object stack-for-small">
-            <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
-            </div>
-            <div class="media-object-section">
-              <h5>Mike Stevenson</h5>
-              <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you</p>
-            </div>
           </div>
-          <div class="media-object stack-for-small">
-            <div class="media-object-section">
-              <img class="thumbnail" src="http://placehold.it/200x200">
-            </div>
-            <div class="media-object-section">
-              <h5>Mike Stevenson</h5>
-              <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you</p>
-            </div>
-          </div>
-          <label>
-            My Review
-            <textarea placeholder="None"></textarea>
-          </label>
-          <button class="button">Submit Review</button>
         </div>
         <div class="tabs-panel" id="panel2">
           <div class="row medium-up-3 large-up-5">
@@ -171,7 +143,6 @@
     </div>
 
     <div class="row column">
-      <hr>
       <ul class="menu">
         <li>Yeti Store</li>
         <li><a href="#">Home</a></li>
