@@ -23,13 +23,14 @@
         <div class="large-6 small-12 columns">
           <div class="row">
               <div class="large-12 column">
-                 <form method="post" action="<?php echo base_url('SubirProducto/guardar'); ?>">
+                 <form method="post" action="<?php echo base_url('SubirProducto/guardar'); ?>" enctype="multipart/form-data">
+                   <input name="id" type="hidden" readonly="true"value="<?php echo $anuncio->id;?>"/>
                   <label>Título </label>
-                    <input autofocus="true" type="text" name="titulo"/>
+                    <input autofocus="true" type="text" value="<?php echo $anuncio->titulo;?>"name="titulo"required="true"/>
                   <label>Dirección</label>
-                    <input type="text" name="direccion"/>
+                    <input type="text" name="direccion"required="true"value="<?php echo $anuncio->direccion;?>"/>
                   <label>Tipo</label>
-                    <select name="tipo" required="true">
+                    <select name="tipo" required="true" value="<?php echo $anuncio->tipo;?>">
                       <?php
                           if(isset($tipo)){
                             if(count($tipo) > 0){
@@ -44,7 +45,7 @@
                        ?>
                     </select>
                     <label>Latitud y Longitud</label>
-                      <input readonly type="text" id="latlng" name="latlng"/>
+                      <input readonly type="text" id="latlng" name="latlng"value="<?php echo $anuncio->latlng;?>"/>
             </div>
            </div>
           </div>
@@ -55,13 +56,13 @@
                   <div class="row">
                     <div class="large-12 columns">
                       <label>Precio</label>
-                      <input type="number" name="precio" value=""/>
+                      <input type="number" name="precio" required="true"value="<?php echo $anuncio->precio;?>"/>
                     </div>
                   </div>
                   <div class="row">
                     <div class="large-12 columns">
                       <label>Acción</label>
-                        <select class="" name="accion" required="true">
+                        <select class="" name="accion" required="true"required="true" value="<?php echo $anuncio->accion;?>">
                             <?php
                               if(isset($accion)){
                                 if(count($accion)>0){
@@ -81,19 +82,23 @@
                   <div class="row">
                     <div class="large-12 columns">
                       <label>Descripción</label>
-                      <input type="text" name="descripcion" value=""/>
+                      <input type="text" name="descripcion" value="<?php echo $anuncio->descripcion;?>"required="true"/>
+                    </div>
+                    <div class="large-12 columns">
+                      <input type="hidden" name="usuario" readonly="true" value="<?php echo $_SESSION['usuario'];?>" />
                     </div>
                   </div>
 
-                  <!--<div class="row">
+                  <div class="row">
                     <div class="large-12 columns">
                       <label>Imágenes</label>
-                      <input type="file" multiple="true" accept=".png,.jpeg" value=""/>
+                      <input type="file" name="fotos[]"  multiple="multiple" accept="image/jpeg"/>
                     </div>
-                  </div>-->
+                  </div>
             </div>
            </div>
             </div>
+          </div>
             <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyD1tGk92O2ExGvtxy6rIZkwC7xtuyzHymg&sensor=false"></script>
             <script type="text/javascript">
 
@@ -176,6 +181,7 @@
               #mapCanvas {
                 width: 1200px;
                 height: 400px;
+                margin-left: 130px;
               }
               #infoPanel {
                 float: left;
@@ -198,10 +204,9 @@
             </form>
             <style media="screen">
               #btn{
-                margin-left: 550px;
+                margin-left: 700px;
               }
             </style>
-    </div>
 
  </body>
 </html>

@@ -5,10 +5,9 @@ class Usuario extends CI_Controller{
 
   public function __construct()
   {
+    define('NOLOGING', true);
     parent::__construct();
-    define('NOLOGIN', true);
     $this->load->model('Login_model');
-    $this->load->helper('url');
     //Codeigniter : Write Less Do More
   }
 

@@ -1,4 +1,4 @@
-<?php
+  <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Principal_model extends CI_Model{
@@ -25,5 +25,33 @@ class Principal_model extends CI_Model{
     $datos = $this->db->get('anuncio');
 
     return $datos->result();
+  }
+  function sacarVendedor($id){
+    $this->db->where('id =', $id);
+    $datos= $this->db->get('usuario');
+
+    return $datos->result();
+  }
+  function sacarFoto($id){
+    $this->db->where('idAnuncio =', $id);
+    $datos= $this->db->get('fotos');
+
+    return $datos->result();
+  }
+  function sacaFoto($id){
+    $this->db->where('idAnuncio =', $id);
+    $this->db->limit(1);
+    $datos= $this->db->get('fotos');
+
+    return $datos->result();
+  }
+
+  function busqueda($datos){
+
+    $valor = $_POST['busca'];
+    $this->db->like('titulo',$valor);
+    $query = $this->db->get('anuncio');
+
+    return $query->result();
   }
 }

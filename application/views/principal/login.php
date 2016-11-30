@@ -34,30 +34,30 @@
         <h4 class="text-center">Ingrese sus Datos</h4>
         <div class="column">
         <label>Nombre
-          <input type="text" autofocus="true" placeholder="Nombre"  name="nombre" >
+          <input type="text" autofocus="true" placeholder="Nombre"  required="true" name="nombre" >
         </label>
         <label>Apellido
-          <input type="text" placeholder="Apellido" name="apellido">
+          <input type="text" placeholder="Apellido" name="apellido"required="true">
         </label>
         <label>Correo
-          <input type="text" placeholder="ejemplo@micorreo.com" name="correo">
+          <input type="text" placeholder="ejemplo@micorreo.com" name="correo"required="true">
         </label>
         <label>Contraseña
-          <input type="password" name="clave">
+          <input type="password" name="clave"required="true">
         </label>
         <label>Cédula
-          <input type="text" placeholder="402-0000000-0" name="cedula">
+          <input type="text" placeholder="402-0000000-0" required="true"name="cedula">
         </label>
       </div>
       <div class="column">
         <label>Teléfono
-          <input type="text" placeholder="000-000-0000" name="telefono">
+          <input type="text" placeholder="000-000-0000" name="telefono"required="true">
         </label>
         <label>Fax
-          <input type="text" placeholder="000-000-0000" name="fax">
+          <input type="text" placeholder="000-000-0000" name="fax"required="true">
         </label>
         <label>Celular
-          <input type="text" placeholder="000-000-0000" name="celular">
+          <input type="text" placeholder="000-000-0000" name="celular"required="true">
         </label>
         <label>Información Adicional
           <input type="text" placeholder="Escribe lo que quieras" name="info_adic">

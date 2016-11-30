@@ -16,39 +16,88 @@
       </div>
       <div class="top-bar-right">
         <ul class="menu">
-          <li><a href="#">Mapa</a></li>
+          <li><a href="<?php echo base_url('Mapa'); ?>">Mapa</a></li>
           <li><a href="<?php echo base_url('SubirProducto'); ?>">Publicar Inmueble</a></li>
-          <li><a href="<?php echo base_url('Seguridad'); ?>">Crear Cuenta</a></li>
-          <li><a href="<?php echo base_url('/Seguridad/cerrar'); ?>">Cerrar sesion</a></li>
+          <?php
+          $linkC = base_url('/Seguridad/cerrar');
+          $linkA = base_url('/Seguridad');
+          $linkU = base_url('UserProducto');
+              if (!isset($_SESSION['usuario'])) {
+                echo "<li><a href='{$linkA}'>Iniciar Sesion</a></li>";
+              }else {
+                echo "<li><a href='{$linkU}'>Mis Anuncios</a></li>";
+                echo "<li><a href='{$linkC}'>Cerrar Sesion</a></li>";
+              }
+           ?>
         </ul>
       </div>
       <div class="top-bar-right">
-        <ul class="menu">
-          <li><input type="search" placeholder="Buscar"></li>
-          <li><button type="button" class="button">Buscar</button></li>
-        </ul>
-      </div>
+        <div class="row">
+          <form method="post" action="<?php echo base_url('Principal/busqueda'); ?>">
+            <div class="large-12 columns">
+              <div class="row collapse">
+               <div class="small-10 columns">
+                <input id="mmg" type="text" name="busca" placeholder="casa, apartamento, etc.">
+            </div>
+            <div class="small-2 columns">
+              <button type="submit" class="button postfix">Ir</a>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
+<style media="screen">
+  #mmg{
+    margin-left: 295px;
+  }
+  .caru{
+    width: 100%;
+    margin: auto;
+}
+
+.caru ul{
+    padding: 0;
+    display: flex;
+    width: 400%;
+
+    animation: cambio 20s infinite;
+}
+
+.caru li{
+    width: 100%;
+    list-style: none;
+}
+.caru img{
+    width: 100%;
+    height: 700px;
+}
+
+@keyframes cambio{
+    0%{margin-left: 0;}
+    18%{margin-left: 0;}
+
+    22%{margin-left: -100%;}
+    42%{margin-left: -100%;}
+
+    47%{margin-left: -200%;}
+    67%{margin-left: -200%;}
+
+    72%{margin-left: -300%;}
+    92%{margin-left: -300%;}
+}
+</style>
     <!-- End Top Bar -->
     <br>
-    <!-- <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-  <ul class="orbit-container">
-    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
-    <li class="orbit-slide is-active">
-      <img src="http://placehold.it/1850x750">
-    </li>
-    <li class="orbit-slide">
-      <img src="http://placehold.it/1850x750">
-    </li>
-    <li class="orbit-slide">
-      <img src="http://placehold.it/1850x750">
-    </li>
-    <li class="orbit-slide">
-      <img src="http://placehold.it/1850x750">
-    </li>
-  </ul>
-</div> -->
+    <div class="caru">
+        <ul>
+            <li><img src="<?php echo base_url('/img/img1.jpg'); ?>" alt=""></li>
+            <li><img src="<?php echo base_url('/img/img2.jpg'); ?>" alt=""></li>
+            <li><img src="<?php echo base_url('/img/img3.jpg'); ?>" alt=""></li>
+            <li><img src="<?php echo base_url('/img/img4.jpg'); ?>" alt=""></li>
+        </ul>
+    </div>
     <br /> <br />
     <div class="row column text-center">
       <h2>Artículos Recientes</h2>
@@ -57,61 +106,20 @@
 
     <div class="row small-up-2 large-up-4">
       <?php
+
+
       $d = "RD$ ";
       foreach ($articulo as $art){
+        $url = $art->foto[0]->foto;
+        $url2 = base_url($url);
         $linkArt = base_url("/Principal/showArti/?id={$art->id}");
         echo "      <div class='column' >
-                <img width='600px' height='400px' class='' src='http://placehold.it/600x400'>
+                <img width='600px' height='400px' class='' src='{$url}'>
                 <h5>{$art->titulo}</h5>
                 <p>$d{$art->precio}</p>
                 <a href='{$linkArt}' class='button expanded botones-recientes'>Ver</a>
               </div>";
       } ?>
-
-
-
-      <!-- <div class="column">
-        <img class="" width="600px" height="400px" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
-      <div class="column">
-        <img width="600px" height="400px" class="" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
-      <div class="column">
-        <img width="600px" height="400px" class="" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
-      <div class="column">
-        <img width="600px" height="400px" class="" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
-      <div class="column">
-        <img width="600px" height="400px" class="" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
-      <div class="column">
-        <img width="600px" height="400px" class="" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div>
-      <div class="column">
-        <img width="600px" height="400px" class="" src="http://placehold.it/600x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button expanded botones-recientes">Ver</a>
-      </div> -->
     </div>
     <hr>
     <div class="row column text-center">
@@ -123,167 +131,27 @@
       <?php
       $d = "RD$ ";
       foreach ($articulos as $arti){
+        $url = $arti->foto[0]->foto;
+        $url2 = base_url($url);
          $linkArt = base_url("/Principal/showArti/?id={$arti->id}");
         echo             "<div class='column'>
-                <img class='thumbnail' src='http://placehold.it/500x400'>
+                <img class='thumbnail' width=\"500px\" height=\"400px\" src='{$url2}'>
                 <h5>{$arti->titulo}</h5>
                 <p>$d{$arti->precio}</p>
                 <a href='{$linkArt}' class='button small expanded hollow'>Ver</a>
               </div>";
       } ?>
-      <!-- <div class="column">
-        <img class="thumbnail" src="http://placehold.it/500x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button small expanded hollow">Ver</a>
-      </div>
-      <div class="column">
-        <img class="thumbnail" src="http://placehold.it/500x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button small expanded hollow">Ver</a>
-      </div>
-      <div class="column">
-        <img class="thumbnail" src="http://placehold.it/500x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button small expanded hollow">Ver</a>
-      </div>
-      <div class="column">
-        <img class="thumbnail" src="http://placehold.it/500x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button small expanded hollow">Ver</a>
-      </div>
-      <div class="column">
-        <img class="thumbnail" src="http://placehold.it/500x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button small expanded hollow">Ver</a>
-      </div>
-      <div class="column">
-        <img class="thumbnail" src="http://placehold.it/500x400">
-        <h5>Nulla At Nulla Justo, Eget</h5>
-        <p>$400</p>
-        <a href="<?php echo base_url('Producto'); ?>" class="button small expanded hollow">Ver</a>
-      </div> -->
+
     </div>
 
     <hr>
-    <!--<div class="row">
-      <div class="medium-4 columns">
-        <h4>Top Products</h4>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-      </div>
-      <div class="medium-4 columns">
-        <h4>Top Products</h4>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-      </div>
-      <div class="medium-4 columns">
-        <h4>Top Products</h4>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-        <div class="media-object">
-          <div class="media-object-section">
-            <img class="thumbnail" src="http://placehold.it/100x100">
-          </div>
-          <div class="media-object-section">
-            <h5>Nunc Eu Ullamcorper Orci</h5>
-            <p>Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque.</p>
-          </div>
-        </div>
-      </div>
-    </div>-->
-
     <div class="callout large secondary">
       <div class="row">
-        <div class="large-4 columns">
-          <h5>Vivamus Hendrerit Arcu Sed Erat Molestie</h5>
-          <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit.</p>
+        <div class="large-4 columns left">
+          <h5>Itla Inmueble <i>@copyright 2016</i></h5>
+          <!-- <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna.</p> -->
         </div>
         <div class="large-3 large-offset-2 columns">
-          <ul class="menu vertical">
-            <li><a href="#">One</a></li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
-            <li><a href="#">Four</a></li>
-          </ul>
-        </div>
-        <div class="large-3 columns">
-          <ul class="menu vertical">
-            <li><a href="#">One</a></li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
-            <li><a href="#">Four</a></li>
-          </ul>
         </div>
       </div>
     </div>

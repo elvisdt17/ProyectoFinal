@@ -16,20 +16,21 @@ class Login_model extends CI_Model{
   }
 
   function iniciarSesion($correo, $clave){
-    $this->db->where('correo=', $correo);
-    $this->db->where('clave=', md5($clave));
-
-    $correo = false;
-
+    $this->db->where('correo =' ,$correo);
+    $this->db->where('clave =' ,md5($clave));
     $query = $this->db->get('usuario');
     $result = $query->result();
 
-    if(count($result)> 0){
-      $correo = $result[0];
+    $usuario = false;
 
-      return $correo->id;
+
+    if(count($result) > 0){
+      $usuario = $result[0];
+
+      return $usuario->id;
+    }else {
+      return false;
     }
-    return false;
-
   }
+
 }

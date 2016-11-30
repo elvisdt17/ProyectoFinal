@@ -3,8 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
+    <title>Itla Inmueble</title>
     <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <script>
+      function cambiar(a){
+        var img = document.getElementById('img');
+        img.src=a;
+      }
+    </script>
+    <style media="screen">
+      #img{
+        max-width: 600px;
+        max-height: 400px;
+      }
+    </style>
   </head>
   <body>
     <!-- Start Top Bar -->
@@ -14,15 +26,6 @@
           <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text">Itla Inmueble</li>
             <li class="has-submenu">
-              <a href="#">One</a>
-              <ul class="submenu menu vertical" data-submenu>
-                <li><a href="#">One</a></li>
-                <li><a href="#">Two</a></li>
-                <li><a href="#">Three</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
           </ul>
         </div>
       </div>
@@ -42,47 +45,41 @@
     </div>
 
     <div class="row">
-      <div class="medium-6 columns">
-        <img class="thumbnail" src="http://placehold.it/650x350">
-        <div class="row small-up-4">
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/250x200">
-          </div>
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/250x200">
-          </div>
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/250x200">
-          </div>
-          <div class="column">
-            <img class="thumbnail" src="http://placehold.it/250x200">
-          </div>
-        </div>
-      </div>
-      <div class="medium-6 large-5 columns">
-        <?php
 
-          
+      <?php
+$url = $foto[0]->foto;
+$url2 = base_url("{$url}");
+
+      echo "<div class=\"medium-6 columns\">
+        <img class=\"thumbnail\" id=\"img\" src=\"{$url2}\" width=\"700px\" height=\"400px\">";
+        $fotos = "";
+          echo "<div class=\"row small-up-4\">";
+        if (count($foto) > 1) {
+          foreach ($foto as $f) {
+            $fotos .= "<div class=\"column\">
+              <img class=\"thumbnail\" src=\"".base_url($f->foto)."\" width=\"250px\" height=\"200px\" onclick='cambiar(\"".base_url($f->foto)."\")'>
+            </div>";
+          }
+        }
+        echo $fotos."</div>";
         ?>
-        <h3>My Awesome Product</h3>
-        <p>Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in.</p>
+      </div>
+
+      <div class="medium-6 large-5 columns">
+        <h3><?php echo $articulo[0]->titulo; ?></h3>
+        <p><?php echo $articulo[0]->descripcion; ?></p>
+
 
         <div class="row">
           <div class="small-3 columns">
             <label for="middle-label" class="middle">Precio</label>
           </div>
           <div class="small-9 columns">
-            <input readonly type="text" id="middle-label" value="">
+            <input type="text" id="middle-label" readonly="true"value="<?php echo $articulo[0]->precio;?>">
           </div>
         </div>
 
         <a href="#" class="button large expanded">Contactar</a>
-
-        <div class="small secondary expanded button-group">
-            <a class="button">Facebook</a>
-            <a class="button">Twitter</a>
-            <a class="button">Yo</a>
-          </div>
         </div>
     </div>
 <br>
@@ -99,8 +96,12 @@
               <img class="thumbnail" src="http://placehold.it/100x100">
             </div> -->
             <div class="media-object-section">
-              <h5>Mike Stevenson</h5>
-              <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
+              <h5><?php echo $vendedor[0]->nombre." ".$vendedor[0]->apellido;?></h5>
+              <i><p>Formas de contacto</p></i>
+              <hr>
+              <p>Celular: <?php echo $vendedor[0]->celular;?></p>
+              <p>Fax: <?php echo $vendedor[0]->fax;?></p>
+              <p>Telefono: <?php echo $vendedor[0]->telefono;?></p>
             </div>
           </div>
           </div>
@@ -144,10 +145,10 @@
 
     <div class="row column">
       <ul class="menu">
-        <li>Yeti Store</li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li>Itla Inmueble</li>
+        <li><a href="<?php echo base_url('Principal'); ?>">Inicio</a></li>
+        <!-- <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li> -->
         <li class="float-right">Copyright 2016</li>
       </ul>
     </div>
